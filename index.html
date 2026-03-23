@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>FemCare AI</title>
+
+```
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+```
+
+</head>
+
+<body>
+
+<header>
+
+<h1 class="logo">
+<i class="fa-solid fa-heart"></i>
+FemCare AI
+<i class="fa-solid fa-venus"></i>
+</h1>
+
+<p class="tagline">
+Smart Women Health Companion
+</p>
+
+</header>
+
+<div class="container">
+
+<!-- MENSTRUATION TRACKER -->
+
+<div class="card">
+
+<img
+src="https://png.pngtree.com/png-clipart/20201208/original/pngtree-hand-drawn-calendar-menstruation-toilet-female-illustration-png-image_5526048.jpg"
+class="card-img">
+
+<h2>
+<i class="fas fa-calendar-days"></i>
+Menstruation Tracker
+</h2>
+
+<input type="date" id="date" required>
+
+<input
+type="number"
+id="cycle"
+placeholder="Cycle Length"
+required>
+
+<button onclick="savePeriod()">
+Save Data
+</button>
+
+<p id="periodResult"></p>
+
+</div>
+
+<!-- PREGNANCY PLAN -->
+
+<div class="card">
+
+<img
+src="https://www.shutterstock.com/image-vector/pregnant-woman-future-mom-pregnancy-260nw-2301949773.jpg"
+class="card-img">
+
+<h2>🤰 Pregnancy Plan</h2>
+
+<input
+type="number"
+id="week"
+placeholder="Enter Week">
+
+<select id="pregnancyCare">
+
+<option value="">Select Topic</option>
+
+<option value="food">Food & Nutrition</option>
+
+<option value="doctor">Doctor Visits</option>
+
+<option value="exercise">Exercise & Yoga</option>
+
+<option value="sleep">Sleep & Water</option>
+
+<option value="tests">Blood Tests</option>
+
+<option value="after">After Delivery Care</option>
+
+</select>
+
+<button onclick="pregnancyGuide()">
+Get Plan
+</button>
+
+<p id="pregnancyResult"></p>
+
+</div>
+
+<!-- AI FOOD SUGGESTION -->
+
+<div class="card">
+
+<img
+src="https://images.stockcake.com/public/0/1/e/01ea7e13-cf2a-4d39-ac73-7c3d802237ee_large/nutritious-anime-joy-stockcake.jpg"
+class="card-img">
+
+<h2>
+<i class="fas fa-apple-whole"></i>
+AI Food Suggestion
+</h2>
+
+<input
+type="text"
+id="food"
+placeholder="Enter symptom">
+
+<button onclick="askFood()">
+Ask AI
+</button>
+
+<p id="foodResult"></p>
+
+</div>
+
+<!-- CHATBOT -->
+
+<div class="card">
+
+<img
+src="https://img.freepik.com/free-vector/chatbot-healthcare-abstract-concept-illustration_335657-3722.jpg"
+class="card-img">
+
+<h2>
+<i class="fas fa-robot"></i>
+Health Chatbot
+</h2>
+
+<input
+type="text"
+id="chat"
+placeholder="Ask health question">
+
+<button onclick="chatbot()">
+Ask Bot
+</button>
+
+<button onclick="startVoice()">
+🎤
+</button>
+
+<p id="chatResult"></p>
+
+</div>
+
+<!-- MEDICINE REMINDER -->
+
+<div class="card">
+
+<img
+src="https://img.freepik.com/free-vector/online-medicine-composition-with-image-smartphone-with-reminder-app-taking-pills_1284-54425.jpg"
+class="card-img">
+
+<h2>
+<i class="fas fa-clock"></i>
+Medicine Reminder
+</h2>
+
+<input
+type="text"
+id="med"
+placeholder="Medicine name"
+required>
+
+<input
+type="time"
+id="time"
+required>
+
+<button onclick="setReminder()">
+Set Reminder
+</button>
+
+<ul id="reminderList"></ul>
+
+<!-- backend success message appears here -->
+
+<p id="reminderStatus"></p>
+
+</div>
+
+<!-- PCOD CARE -->
+
+<div class="card">
+
+<img
+src="https://tap.health/wp-content/uploads/2024/04/PCOD-vs-PCOS-scaled.webp"
+class="card-img">
+
+<h2>🧬 PCOS / PCOD Care</h2>
+
+<select id="pcosType">
+
+<option value="">Select Issue</option>
+
+<option value="diet">Diet Plan</option>
+
+<option value="exercise">Exercise</option>
+
+<option value="medicine">Medicine</option>
+
+<option value="lifestyle">Lifestyle</option>
+
+</select>
+
+<button onclick="pcosGuide()">
+Get Plan
+</button>
+
+<p id="pcosResult"></p>
+
+</div>
+
+<!-- PERIOD CARE -->
+
+<div class="card">
+
+<img
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRCT8LMTuT7eNsKCtxob6S38W06tOAWwqwsw&s"
+class="card-img">
+
+<h2>🌸 Period Care</h2>
+
+<h4>Period Products</h4>
+
+<select id="periodProduct">
+
+<option value="">Select Option</option>
+
+<option value="pads">Sanitary Pads</option>
+
+<option value="tampons">Tampons</option>
+
+<option value="cups">Menstrual Cups</option>
+
+<option value="panties">Period Panties</option>
+
+</select>
+
+<button onclick="periodProductGuide()">
+Get Product Info
+</button>
+
+<p id="productResult"></p>
+
+<h4>Severe Pain Relief</h4>
+
+<select id="periodPain">
+
+<option value="">Select Option</option>
+
+<option value="heat">Heat Therapy</option>
+
+<option value="meds">Medication</option>
+
+<option value="diet">Diet & Natural Remedies</option>
+
+<option value="massage">Acupressure / Massage</option>
+
+</select>
+
+<button onclick="periodPainGuide()">
+Get Relief Tips
+</button>
+
+<p id="painResult"></p>
+
+</div>
+
+<!-- HYGIENE -->
+
+<div class="card">
+
+<img
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9B1UNgppc0A9PsC7v221ILytFTNeTy1A3sA&s"
+class="card-img">
+
+<h2>🌼 Hygiene</h2>
+
+<h4>Period State</h4>
+
+<select id="periodState">
+
+<option value="">Select Condition</option>
+
+<option value="during">During Periods</option>
+
+<option value="missed">Missed Period</option>
+
+<option value="pain">Severe Pain</option>
+
+</select>
+
+<button onclick="periodGuide()">
+Get Guide
+</button>
+
+<p id="periodGuideResult"></p>
+
+<h4>Personal Hygiene Tips</h4>
+
+<select id="hygieneOption">
+
+<option value="">Select Area</option>
+
+<option value="hands">Hand Hygiene</option>
+
+<option value="body">Body & Bathing</option>
+
+<option value="oral">Oral Hygiene</option>
+
+<option value="hair">Hair & Face Care</option>
+
+<option value="nails">Nail & Foot Care</option>
+
+<option value="clothes">Clothing & Laundry</option>
+
+<option value="other">Other Hygiene Habits</option>
+
+<option value="intimate">Intimate Hygiene</option>
+
+</select>
+
+<button onclick="hygieneGuide()">
+Get Tips
+</button>
+
+<p id="hygieneResult"></p>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
